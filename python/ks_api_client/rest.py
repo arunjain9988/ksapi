@@ -144,7 +144,7 @@ class RESTClientObject(object):
         post_params = post_params or {}
         headers = headers or {}
 
-        timeout = None
+        timeout = urllib3.Timeout(total=10) # Changed from None
         if _request_timeout:
             if isinstance(_request_timeout, six.integer_types + (float, )):  # noqa: E501,F821
                 timeout = urllib3.Timeout(total=_request_timeout)
